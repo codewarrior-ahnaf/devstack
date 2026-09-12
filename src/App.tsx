@@ -2,8 +2,9 @@ import { Suspense } from "react";
 import HeroSection from "./components/layout/HeroSection";
 import Navbar from "./components/layout/Navbar";
 import TechSection from "./components/tech/TechSection";
+import type { techType } from "./types/type";
 
-const techFetch = async () => {
+const techFetch = async (): Promise<techType[]> => {
   const res = await fetch("/data.json");
   const data = await res.json();
 
@@ -12,7 +13,7 @@ const techFetch = async () => {
 
 function App() {
   const techPromise = techFetch();
-
+  
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-white">
       <Navbar />

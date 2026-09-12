@@ -6,7 +6,7 @@ const HeroSection = () => {
       <div>
         <h1 className="text-8xl font-bold pb-6">
           <span className="text-[#0F172A] tex">Build Your Ideal</span> <br />
-          <span className="bg-gradient-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
             Development Stack
           </span>
         </h1>
@@ -18,7 +18,7 @@ const HeroSection = () => {
         </p>
 
         <div className="flex gap-3 pt-4">
-          <button className="btn btn-active w-42 h-10 bg-gradient-to-r from-[#F97316] to-[#EC4899] text-white font-medium text-sm rounded-lg transition duration-200 hover:opacity-90">
+          <button className="btn btn-active w-42 h-10 bg-linear-to-r from-[#F97316] to-[#EC4899] text-white font-medium text-sm rounded-lg transition duration-200 hover:opacity-90">
             Explore Technologies
           </button>
           <button className="btn btn-neutral btn-outline w-42 h-10 bg-white text-[#374151] border border-[#E5E7EB] font-semibold text-sm rounded-lg transition duration-200 hover:bg-gray-50">

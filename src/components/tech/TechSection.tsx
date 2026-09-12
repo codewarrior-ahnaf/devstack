@@ -1,18 +1,21 @@
 import { use } from "react";
+import type { techType } from "../../types/type";
 
-type TechSectionProps = {
-  techPromise: Promise<unknown>;
+
+interface TechSectionProps {
+  techPromise: Promise<techType[]>;
 };
 
 const TechSection = ({ techPromise }: TechSectionProps) => {
-  use(techPromise);
+  const techSections = use(techPromise);
 
   return (
     <div>
+      
       <div className="container mx-auto mt-30">
         <h1 className="text-5xl font-extrabold">
           Explore the
-          <span className="bg-gradient-to-r from-[#ec4899] to-[#8b5cf6] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#ec4899] to-[#8b5cf6] bg-clip-text text-transparent">
             Technologies
           </span>
         </h1>
@@ -22,6 +25,15 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
         </p>
       </div>
 
+      {
+        techSections.map((techSection) => {
+          return (
+            <div>
+              {techSection.name}
+            </div>
+          )
+        }) 
+      }
     </div>
   );
 };

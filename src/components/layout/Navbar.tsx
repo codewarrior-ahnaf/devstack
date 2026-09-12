@@ -4,8 +4,8 @@ import logo from "../../assets/logo-text.png";
 const Navbar = () => {
   return (
     <>
-      <nav className="border-b border-gray-200">
-        <div className="flex justify-between container mx-auto m-6">
+      <nav className="border-b border-gray-200 sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
+        <div className="flex justify-between container mx-auto px-6 py-4">
           <img src={logo} alt="" className="h-10" />
 
           <ul className="flex items-center gap-4 cursor-pointer">

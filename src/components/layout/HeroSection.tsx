@@ -5,8 +5,8 @@ const HeroSection = () => {
   return (
     <div className="flex justify-between items-center container mx-auto mt-30">
       <div>
-        <h1 className="text-7xl font-bold pb-6">
-          <span className="text-[#0F172A] tex">Build Your Ideal</span> <br />{" "}
+        <h1 className="text-8xl font-bold pb-6">
+          <span className="text-[#0F172A] tex">Build Your Ideal</span> <br />
           <span className="bg-gradient-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
             Development Stack
           </span>
@@ -14,7 +14,7 @@ const HeroSection = () => {
 
         <p className="text-[#475569] text-2xl pb-10">
           Explore frontend, backend, database, and tooling options, <br />
-          compare them side by side, and put together the stack that fits your{" "}
+          compare them side by side, and put together the stack that fits your
           <br /> next project.
         </p>
 

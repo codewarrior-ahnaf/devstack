@@ -1,4 +1,5 @@
 import { use, useState } from "react";
+import { toast } from "react-toastify";
 import type { techType } from "../../types/type";
 import TechCard from "./TechCard";
 
@@ -11,17 +12,34 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
   const [stack, setStack] = useState<techType[]>([]);
 
   const addToStack = (tech: techType) => {
-    setStack((currentStack) =>
-      currentStack.some((item) => item.id === tech.id)
-        ? currentStack
-        : [...currentStack, tech],
-    );
+    if (stack.some((item) => item.id === tech.id)) {
+      toast.warning(`${tech.name} is already in your stack.`);
+      return;
+    }
+
+    setStack((currentStack) => [...currentStack, tech]);
+    toast.success(`${tech.name} added to your stack.`);
   };
 
   const removeFromStack = (techId: number) => {
+    const removedTech = stack.find((tech) => tech.id === techId);
+
     setStack((currentStack) =>
       currentStack.filter((tech) => tech.id !== techId),
     );
+
+    if (removedTech) {
+      toast.info(`${removedTech.name} removed from your stack.`);
+    }
+  };
+
+  const removeAllFromStack = () => {
+    if (stack.length === 0) {
+      return;
+    }
+
+    setStack([]);
+    toast.error("All technologies removed from your stack.");
   };
 
   return (
@@ -91,7 +109,7 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
 
           <button
             type="button"
-            onClick={() => setStack([])}
+            onClick={removeAllFromStack}
             disabled={stack.length === 0}
             className="mt-5 w-full rounded-lg border border-rose-200 py-2 text-xs font-medium text-rose-500 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-40"
           >

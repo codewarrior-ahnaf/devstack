@@ -1,17 +1,16 @@
 import { use } from "react";
 import type { techType } from "../../types/type";
-
+import TechCard from "./TechCard";
 
 interface TechSectionProps {
   techPromise: Promise<techType[]>;
-};
+}
 
 const TechSection = ({ techPromise }: TechSectionProps) => {
-  const techSections = use(techPromise);
+  const techSection = use(techPromise);
 
   return (
     <div>
-      
       <div className="container mx-auto mt-30">
         <h1 className="text-5xl font-extrabold">
           Explore the
@@ -20,20 +19,16 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
           </span>
         </h1>
 
-        <p className="pt-4 text-[#64748b] text-lg">
+        <p className="pt-4 text-[#64748b] text-xl">
           Pick one technology per category to build your ideal stack.
         </p>
       </div>
 
-      {
-        techSections.map((techSection) => {
-          return (
-            <div>
-              {techSection.name}
-            </div>
-          )
-        }) 
-      }
+      <div className="container mx-auto mt-10 grid grid-cols-1 gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-3">
+        {techSection.map((tech) => (
+          <TechCard key={tech.id} tech={tech} />
+        ))}
+      </div>
     </div>
   );
 };

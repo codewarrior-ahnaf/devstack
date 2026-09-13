@@ -100,6 +100,7 @@ devstack/
 │   ├── assets/                # Logos, illustrations, and images
 │   ├── components/
 │   │   ├── layout/            # Navbar, HeroSection, Footer
+|   |   ├── loadingscreen/     # Loading screen componentv
 │   │   ├── stack/             # Stack panel components
 │   │   └── tech/              # TechCard & TechSection components
 │   ├── types/                 # TypeScript type declarations

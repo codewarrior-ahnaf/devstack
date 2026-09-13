@@ -21,7 +21,7 @@ const HeroSection = () => {
           <button className="brand-gradient h-10 rounded-lg px-4 text-xs font-semibold text-white shadow-sm transition duration-200 hover:opacity-90">
             Explore Technologies
           </button>
-          <button className="h-10 rounded-lg border border-[#E5E7EB] bg-white px-5 text-xs font-semibold text-[#374151] transition duration-200 hover:bg-gray-50">
+          <button className="h-11 rounded-lg border border-[#E5E7EB] bg-white px-10 text-xs font-semibold text-[#374151] transition duration-200 hover:bg-gray-50">
             Learn More
           </button>
         </div>

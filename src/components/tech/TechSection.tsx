@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import type { techType } from "../../types/type";
 import TechCard from "./TechCard";
 
@@ -8,6 +8,21 @@ interface TechSectionProps {
 
 const TechSection = ({ techPromise }: TechSectionProps) => {
   const techSection = use(techPromise);
+  const [stack, setStack] = useState<techType[]>([]);
+
+  const addToStack = (tech: techType) => {
+    setStack((currentStack) =>
+      currentStack.some((item) => item.id === tech.id)
+        ? currentStack
+        : [...currentStack, tech],
+    );
+  };
+
+  const removeFromStack = (techId: number) => {
+    setStack((currentStack) =>
+      currentStack.filter((tech) => tech.id !== techId),
+    );
+  };
 
   return (
     <div>
@@ -24,10 +39,65 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
         </p>
       </div>
 
-      <div className="container mx-auto mt-10 grid grid-cols-1 gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-        {techSection.map((tech) => (
-          <TechCard key={tech.id} tech={tech} />
-        ))}
+      <div className="container mx-auto mt-10 grid grid-cols-1 items-start gap-6 pb-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techSection.map((tech) => (
+            <TechCard
+              key={tech.id}
+              tech={tech}
+              isSelected={stack.some((item) => item.id === tech.id)}
+              onAdd={() => addToStack(tech)}
+            />
+          ))}
+        </div>
+
+        <aside className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
+          <h2 className="text-base font-bold text-gray-900">Your Stack</h2>
+          <p className="mt-1 text-xs text-gray-400">
+            {stack.length} {stack.length === 1 ? "Technology" : "Technologies"}{" "}
+            Selected
+          </p>
+
+          <div className="mt-4 space-y-3">
+            {stack.length === 0 ? (
+              <p className="rounded-xl border border-dashed border-gray-200 px-3 py-5 text-center text-xs text-gray-400">
+                Add technologies to build your stack.
+              </p>
+            ) : (
+              stack.map((tech) => (
+                <div
+                  key={tech.id}
+                  className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-2.5"
+                >
+                  <img className="h-7 w-7" src={tech.icon} alt="" />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-xs font-semibold text-gray-800">
+                      {tech.name}
+                    </p>
+                    <p className="text-[10px] text-gray-400">{tech.category}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => removeFromStack(tech.id)}
+                    aria-label={`Remove ${tech.name} from stack`}
+                    className="text-lg leading-none text-gray-400 transition hover:text-rose-500"
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setStack([])}
+            disabled={stack.length === 0}
+            className="mt-5 w-full rounded-lg border border-rose-200 py-2 text-xs font-medium text-rose-500 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            Remove All
+          </button>
+        </aside>
       </div>
     </div>
   );

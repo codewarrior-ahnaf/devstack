@@ -1,2 +1,70 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.loading-screen {
+  background-color: #f8fafc;
+  background-image:
+    linear-gradient(#e2e8f0 1px, transparent 1px),
+    linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+  background-position: center;
+  background-size: 34px 34px;
+}
+
+.loading-screen::before {
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 250, 252, 0.82);
+  content: "";
+}
+
+.loading-screen > div {
+  z-index: 1;
+}
+
+.loading-mark {
+  animation: loading-float 2.2s ease-in-out infinite;
+}
+
+.loading-ring {
+  position: absolute;
+  height: 74px;
+  width: 74px;
+  border: 2px solid transparent;
+  border-top-color: #60a5fa;
+  border-right-color: #db2777;
+  border-radius: 999px;
+  animation: loading-spin 1s linear infinite;
+}
+
+.loading-progress {
+  animation: loading-progress 1.6s ease-in-out infinite;
+  transform-origin: left;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes loading-progress {
+  0% {
+    transform: translateX(-100%) scaleX(0.35);
+  }
+  50% {
+    transform: translateX(0) scaleX(0.75);
+  }
+  100% {
+    transform: translateX(135%) scaleX(0.35);
+  }
+}

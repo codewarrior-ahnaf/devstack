@@ -17,9 +17,11 @@ const badgeStyles: Record<string, string> = {
 
 interface TechCardProps {
   tech: techType;
+  isSelected: boolean;
+  onAdd: () => void;
 }
 
-const TechCard = ({ tech }: TechCardProps) => {
+const TechCard = ({ tech, isSelected, onAdd }: TechCardProps) => {
   return (
     <div className="border border-gray-200 rounded-2xl p-5 bg-white shadow-sm h-full flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
       <div className="flex justify-between items-start mb-4">
@@ -50,14 +52,19 @@ const TechCard = ({ tech }: TechCardProps) => {
         <span className="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-medium">
           {tech.category}
         </span>
-        <span className="text-blue-600 font-medium">{tech.difficulty}</span>
+        <span className="text-[#475569] font-medium">{tech.difficulty}</span>
         <span className="ml-auto flex items-center gap-1 text-gray-700 font-semibold">
           <span className="text-amber-400">★</span> {tech.rating}
         </span>
       </div>
 
-      <button className="w-full bg-gray-900 text-white text-sm py-2.5 rounded-xl font-medium hover:bg-gray-800 transition">
-        Add to Stack
+      <button
+        type="button"
+        onClick={onAdd}
+        disabled={isSelected}
+        className="w-full rounded-xl bg-gray-900 py-2.5 text-sm font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
+      >
+        {isSelected ? "Added to Stack" : "Add to Stack"}
       </button>
     </div>
   );

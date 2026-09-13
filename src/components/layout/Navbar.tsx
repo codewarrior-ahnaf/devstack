@@ -1,35 +1,37 @@
 import logo from "../../assets/logo-text.png";
 
+const navLinks = ["Home", "Technologies", "Projects", "About", "Contact"];
+
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <img src={logo} alt="Dev Stack Logo" className="h-10" />
+    <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md transition-all">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <a href="#home" className="mr-auto">
+          <img src={logo} alt="Dev Stack Logo" className="h-9" />
+        </a>
 
-        {/* Links */}
-        <ul className="flex items-center gap-6 cursor-pointer font-medium">
-          <li className="text-[#DB2777]">Home</li>
-          <li className="text-[#475569] hover:text-[#DB2777] transition">
-            Technologies
-          </li>
-          <li className="text-[#475569] hover:text-[#DB2777] transition">
-            Projects
-          </li>
-          <li className="text-[#475569] hover:text-[#DB2777] transition">
-            About
-          </li>
-          <li className="text-[#475569] hover:text-[#DB2777] transition">
-            Contact
-          </li>
+        <ul className="mx-auto flex items-center gap-6 font-medium">
+          {navLinks.map((link, index) => (
+            <li key={link}>
+              <a
+                href={`#${link.toLowerCase()}`}
+                className={
+                  index === 0
+                    ? "text-[#DB2777]"
+                    : "text-[#475569] transition hover:text-[#DB2777]"
+                }
+              >
+                {link}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Buttons */}
-        <div className="flex items-center gap-4">
-          <button className="cursor-pointer text-[#334155] hover:text-black font-medium text-sm">
+        <div className="ml-auto flex items-center gap-4">
+          <button className="cursor-pointer text-sm font-medium text-[#334155] hover:text-black">
             Sign In
           </button>
-          <button className="cursor-pointer bg-[#DB2777] hover:bg-[#be185d] text-white px-6 py-2.5 rounded-full font-medium text-sm transition shadow-sm">
+          <button className="brand-gradient cursor-pointer rounded-full px-6 py-2.5 text-sm font-medium text-white shadow-sm transition hover:opacity-90">
             Sign Up
           </button>
         </div>

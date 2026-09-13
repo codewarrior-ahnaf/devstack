@@ -1,5 +1,37 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "tailwind-scrollbar";
+
+:root {
+  --brand-gradient: linear-gradient(
+    90deg,
+    #f97316 0%,
+    #db2777 52%,
+    #7c3aed 100%
+  );
+}
+
+.brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+.brand-gradient-text {
+  background-image: var(--brand-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
 
 .Toastify__toast {
   border: 1px solid #f1f5f9;
@@ -32,7 +64,7 @@
 }
 
 .Toastify__progress-bar {
-  background: linear-gradient(90deg, #60a5fa, #db2777);
+  background: var(--brand-gradient);
 }
 
 .Toastify__close-button {

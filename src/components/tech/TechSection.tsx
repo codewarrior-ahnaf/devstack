@@ -21,7 +21,7 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
     toast.success(`${tech.name} added to your stack.`);
   };
 
-  const removeFromStack = (techId: number) => {
+  const removeFromStack = (techId: techType["id"]) => {
     const removedTech = stack.find((tech) => tech.id === techId);
 
     setStack((currentStack) =>
@@ -43,22 +43,20 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
   };
 
   return (
-    <div>
-      <div className="container mx-auto mt-20 px-6 sm:mt-24 lg:mt-28">
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+    <div id="technologies">
+      <div className="container mx-auto mt-28 px-6">
+        <h1 className="text-5xl font-extrabold tracking-tight">
           Explore the
-          <span className="bg-linear-to-r from-[#ec4899] to-[#8b5cf6] bg-clip-text text-transparent">
-            Technologies
-          </span>
+          <span className="brand-gradient-text">Technologies</span>
         </h1>
 
-        <p className="pt-3 text-sm text-[#64748b] sm:text-base">
+        <p className="pt-3 text-base text-[#64748b]">
           Pick one technology per category to build your ideal stack.
         </p>
       </div>
 
-      <div className="container mx-auto mt-8 grid grid-cols-1 items-start gap-6 px-6 pb-20 lg:grid-cols-[minmax(0,1fr)_260px]">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto mt-8 grid grid-cols-[minmax(0,1fr)_260px] items-start gap-6 px-6 pb-20">
+        <div className="grid grid-cols-3 gap-4">
           {techSection.map((tech) => (
             <TechCard
               key={tech.id}

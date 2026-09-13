@@ -28,7 +28,7 @@ const LoadingScreen = () => {
         </p>
 
         <div className="mt-8 h-1 w-44 overflow-hidden rounded-full bg-[#e2e8f0]">
-          <span className="loading-progress block h-full rounded-full bg-linear-to-r from-[#60a5fa] to-[#db2777]" />
+          <span className="loading-progress brand-gradient block h-full rounded-full" />
         </div>
       </div>
     </div>
@@ -40,10 +40,10 @@ function App() {
 
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <div className="flex h-screen flex-col overflow-hidden bg-white">
+      <div className="flex h-screen min-w-[1024px] flex-col overflow-hidden bg-white">
         <Navbar />
 
-        <main className="scroll-container flex-1 overflow-y-auto">
+        <main className="scroll-container scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#db2777] hover:scrollbar-thumb-[#7c3aed] flex-1 overflow-y-auto">
           <HeroSection />
           <TechSection techPromise={techPromise} />
           <Footer />

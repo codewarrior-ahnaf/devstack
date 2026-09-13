@@ -23,16 +23,16 @@ interface TechCardProps {
 
 const TechCard = ({ tech, isSelected, onAdd }: TechCardProps) => {
   return (
-    <div className="border border-gray-200 rounded-2xl p-5 bg-white shadow-sm h-full flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+    <div className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex justify-between items-start mb-4">
         <img
           src={tech.icon}
           alt={tech.name}
           loading="lazy"
-          className="w-9 h-9"
+          className="h-8 w-8"
         />
         <span
-          className={`text-xs font-medium px-3 py-1 rounded-full ${
+          className={`rounded-full px-2.5 py-1 text-[10px] font-semibold ${
             badgeStyles[tech.badge ?? ""] || "bg-gray-100 text-gray-600"
           }`}
         >
@@ -40,20 +40,16 @@ const TechCard = ({ tech, isSelected, onAdd }: TechCardProps) => {
         </span>
       </div>
 
-      <h2 className="text-base font-semibold text-gray-900 mb-1.5">
-        {tech.name}
-      </h2>
+      <h2 className="mb-1.5 text-sm font-bold text-gray-900">{tech.name}</h2>
 
-      <p className="text-sm text-gray-500 leading-relaxed mb-4">
-        {tech.description}
-      </p>
+      <p className="mb-4 text-xs leading-5 text-gray-500">{tech.description}</p>
 
-      <div className="flex items-center gap-3 mb-4 text-xs mt-auto">
-        <span className="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-medium">
+      <div className="mt-auto mb-4 flex items-center gap-2 text-[10px]">
+        <span className="rounded-md bg-gray-100 px-2 py-1 font-medium text-gray-600">
           {tech.category}
         </span>
-        <span className="text-[#475569] font-medium">{tech.difficulty}</span>
-        <span className="ml-auto flex items-center gap-1 text-gray-700 font-semibold">
+        <span className="font-medium text-[#475569]">{tech.difficulty}</span>
+        <span className="ml-auto flex items-center gap-1 font-semibold text-gray-700">
           <span className="text-amber-400">★</span> {tech.rating}
         </span>
       </div>
@@ -62,7 +58,7 @@ const TechCard = ({ tech, isSelected, onAdd }: TechCardProps) => {
         type="button"
         onClick={onAdd}
         disabled={isSelected}
-        className="w-full rounded-xl bg-gray-900 py-2.5 text-sm font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
+        className="w-full rounded-lg bg-slate-950 py-2 text-xs font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"
       >
         {isSelected ? "Added to Stack" : "Add to Stack"}
       </button>

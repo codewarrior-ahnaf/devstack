@@ -26,21 +26,21 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
 
   return (
     <div>
-      <div className="container mx-auto mt-30">
-        <h1 className="text-5xl font-extrabold">
+      <div className="container mx-auto mt-20 px-6 sm:mt-24 lg:mt-28">
+        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
           Explore the
           <span className="bg-linear-to-r from-[#ec4899] to-[#8b5cf6] bg-clip-text text-transparent">
             Technologies
           </span>
         </h1>
 
-        <p className="pt-4 text-[#64748b] text-xl">
+        <p className="pt-3 text-sm text-[#64748b] sm:text-base">
           Pick one technology per category to build your ideal stack.
         </p>
       </div>
 
-      <div className="container mx-auto mt-10 grid grid-cols-1 items-start gap-6 pb-10 lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto mt-8 grid grid-cols-1 items-start gap-6 px-6 pb-20 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {techSection.map((tech) => (
             <TechCard
               key={tech.id}
@@ -51,7 +51,7 @@ const TechSection = ({ techPromise }: TechSectionProps) => {
           ))}
         </div>
 
-        <aside className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
+        <aside className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
           <h2 className="text-base font-bold text-gray-900">Your Stack</h2>
           <p className="mt-1 text-xs text-gray-400">
             {stack.length} {stack.length === 1 ? "Technology" : "Technologies"}{" "}

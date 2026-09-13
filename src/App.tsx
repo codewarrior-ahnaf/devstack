@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import logo from "./assets/logo-text.png";
 import HeroSection from "./components/layout/HeroSection";
+import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import TechSection from "./components/tech/TechSection";
 import type { techType } from "./types/type";
@@ -45,6 +46,7 @@ function App() {
         <main className="scroll-container flex-1 overflow-y-auto">
           <HeroSection />
           <TechSection techPromise={techPromise} />
+          <Footer />
         </main>
       </div>
     </Suspense>

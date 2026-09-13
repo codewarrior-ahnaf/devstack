@@ -40,7 +40,7 @@ function App() {
 
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <div className="flex h-screen min-w-[1024px] flex-col overflow-hidden bg-white">
+      <div className="flex h-screen min-w-5xl flex-col overflow-hidden bg-white">
         <Navbar />
 
         <main className="scroll-container scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#db2777] hover:scrollbar-thumb-[#7c3aed] flex-1 overflow-y-auto">
